@@ -6,7 +6,7 @@
     {"tag": "Despedida",
     "patterns": ["Adios", "Bye", "Hasta luego!", "Eso sería todo.", "Hasta la próxima", "Hasta pronto"],
     "responses": ["Hasta luego, que tengas un buen día.", "Adios, cuídate.", "¡Bye! Espero haberte ayudado."]
-    },
+    },  
     {"tag": "reservar",
     "patterns": ["¿Tienes habitaciones disponibles?", "Disponibilidad", "¿Cómo reservo una habitación?", "reservación", "¿Donde puedo reservar?", "Quiero una habitación"],
     "responses": ["¡Claro! Puedes reservar en nuestro sitio web www.hotel.com o llamando al 844-140-633.9", "Pregunta por disponibilidad al 844-140-6339 o bien en nuestro sitio web www.hotel.com"]
