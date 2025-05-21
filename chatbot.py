@@ -112,7 +112,7 @@ def predict_class(sentence):
 # FUNCIÓN PARA OBTENER RESPUESTA
 # Esta función toma la lista de intenciones predichas y el JSON de intenciones original
 # para seleccionar una respuesta adecuada.
-def get_response(intents_list, intents_json):
+def get_response(intents_list, intents_json, user_message=None):
     """
     Toma la lista de intenciones predichas (devuelta por predict_class)
     y el objeto JSON de intenciones original.
@@ -124,8 +124,14 @@ def get_response(intents_list, intents_json):
     """
     # Si no se predijo ninguna intención con suficiente confianza...
     if not intents_list:
-        return "No entendí tu mensaje. ¿Puedes reformularlo?"
-        
+        with open("retraining.txt", "a", encoding="utf-8") as f: # Se escribe en un documento de texto, el mensaje que no se entendió correctamente.
+            f.write(user_message + "\n")
+        return "No entendí tu mensaje. ¿Puedes reformularlo?" # Pregunta al usuario si puede reformular el mensaje
+    
+    # Si el porcentaje de predicción es muy bajo...
+    if float(intents_list[0]['probability']) < 0.3:
+        with open("retraining.txt", "a", encoding="utf-8") as f: # Escribe en el documento de texto el mensaje que se predijo de manera baja.
+            f.write(user_message + "\n")
         
         # Obtiene la etiqueta (tag) de la intención más probable (la primera en la lista).
     tag = intents_list[0]['intent']
@@ -152,5 +158,5 @@ while True:
         # Espera la entrada del usuario.
     message = input("Tú: ") # Muestra un prompt "Tú: "
     ints = predict_class(message)    # Obtiene una respuesta basada en la intención predicha.
-    res = get_response(ints, intents)    # Obtiene la respuesta del chatbot.
+    res = get_response(ints, intents, user_message=message)    # Obtiene la respuesta del chatbot.
     print(res) # Imprime la respuesta del chatbot.
