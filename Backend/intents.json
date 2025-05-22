@@ -15,7 +15,7 @@
     "patterns": ["Servicios", "¿Qué servicios ofrecen?", "Tipo de servicios que ofrecen", "¿Qué servicios tienen?", "¿Tienen piscina?", "¿Tienen servicio a la habitación?", "Buffete", "¿Tienen Wi-Fi'", "¿Tienen gimnasio?", "¿Tienen spa?", "¿Tienen estacionamiento?", "¿Tienen restaurante?", "¿Tienen bar?"],
     "responses": ["Contamos con los siguientes servicios: Piscina, gimnasio, spa, estacionamiento, restaurante, bar y servicio a la habitación.", "Ofrecemos piscina, spa, Wi-Fi, desayuno buffet, etc... Para más info comunicate al 844-140-6339."]
     },
-    {"tag": "ubicación",
+    {"tag": "ubicacion",
     "patterns": ["ubicación", "¿Dónde se ubican?", "¿Dónde se encuentran?", "¿Cuál es la ubicación del hotel?", "Dirección", "¿Cuál es la dirección?", "¿Cómo llego?", "¿Dónde están?", "ubi", "¿Dónde queda el hotel?"],
     "responses": ["Estamos ubicados en la calle 123, cuidad, estado, país. Para más información visita nuestro sitio web www.hotel.com.", "Nuestra dirección es calle 123, ciudad, estado, país."]
     },
@@ -23,7 +23,7 @@
     "patterns": ["Horario", "¿A qué hora es el check-in?", "¿A que hora es el check-out?", "¿Que horario tienen?", "¿A que hora puedo llegar?", "¿A que hora me tengo que ir?", "hora", "tiempo de llegada y salida"],
     "responses": ["Somos un hotel 24/7. El check-in es a partir de las 3:00 PM y el check-out hasta las 12:00 PM.", "Puedes hacer check-in desde las 3:00 PM y check-out antes del mediodía."]
     },
-    {"tag": "políticas",
+    {"tag": "politicas",
     "patterns": ["políticas", "¿Cuáles son las políticas del hotel?", "¿Se permite fumar?", "¿Se permiten mascotas?", "¿Cuáles son las políticas del hotel?", "¿Tienen reglas para los huéspedes?", "Políticas del hotel", "¿Cuáles son las reglas?", "reglas", "¿Cuáles son las políticas de cancelación?", "¿Cuál es el reglamento?"],
     "responses": ["Nuestro hotel es libre de humo. Las mascotas no están permitidas, excepto animales de servicio. No se permite el paso con bebidas alcoholicas. Para más información revisa nuestras políticas en www.hotel.com/politicas."]
     },
@@ -31,7 +31,7 @@
     "patterns": ["pago", "métodos de pago", "formas de pago", "¿Qué métodos de pago aceptan?", "¿Puedo pagar con tarjeta?", "¿Aceptan efectivo?", "¿Aceptan PayPal?", "¿Cómo puedo pagar?", "¿Cómo pago?", "¿Qué formas de pago tienen?", "¿Aceptan transferencias?"],
     "responses": ["Aceptamos tarjetas de crédito y débito (Visa, MasterCard), efectivo y pagos en línea a través de nuestro sitio web.", "Puedes pagar con tarjeta de crédito, débito o efectivo. También aceptamos pagos en línea a través de nuestro sitio web."]
     },
-    {"tag": "cancelación",
+    {"tag": "cancelacion",
     "patterns": ["cancelación", "Quiero cancelar mi reservación", "Quiero cancelar", "¿Cómo cancelo una reservación?", "¿Cuales son las políticas de cancelación?", "¿Qué pasa si cancelo?", "¿Puedo cancelar mi reservación?", "¿Cobran por cancelar?", "¿Cómo cancelo una reserva?"],
     "responses": ["Puedes cancelar sin cargo hasta 24 horas antes de tu llegada. Para cancelaciones o cambios, comunícate al 844-140-6339.", "Para cancelar tu reservación, comunicate al 844-140-6339 o visita nuestro sitio web www.hotel.com/cancelacion."]
     },
