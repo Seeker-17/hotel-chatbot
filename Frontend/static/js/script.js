@@ -3,44 +3,24 @@ document.addEventListener('DOMContentLoaded', function() {
     const chatMessages = document.getElementById('chat-messages');
     const userInput = document.getElementById('user-input');
     const sendButton = document.getElementById('send-button');
-    const quickButtons = document.querySelectorAll('.quick-btn');
-    
-    // Variables de estado
+    const quickButtons = document.querySelectorAll('.quick-button'); // Or whatever class you use for quick reply buttons
     let isTyping = false;
-    const botName = "Asistente Hotel";
-    const userName = "Tú";
 
     // Función para añadir mensajes al chat
     function addMessage(text, sender, isQuickReply = false) {
-        if (isTyping && sender === 'bot') return;
-        
         const messageDiv = document.createElement('div');
-        messageDiv.classList.add('message', `${sender}-message`);
-        
+        messageDiv.classList.add('message', '${sender}-message');
+
         const contentDiv = document.createElement('div');
         contentDiv.classList.add('message-content');
-        
-        const messageText = document.createElement('p');
-        messageText.textContent = text;
-        
-        contentDiv.appendChild(messageText);
-        messageDiv.appendChild(contentDiv);
-        
-        // Añadir hora del mensaje
+        contentDiv.textContent = text;
+
         const timeDiv = document.createElement('div');
         timeDiv.classList.add('message-time');
-        const now = new Date();
-        timeDiv.textContent = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        timeDiv.textContent = new Date().toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'});
+
+        messageDiv.appendChild(contentDiv);
         messageDiv.appendChild(timeDiv);
-        
-        // Efecto especial para respuestas rápidas
-        if (isQuickReply) {
-            messageDiv.classList.add('quick-reply');
-            setTimeout(() => {
-                messageDiv.classList.remove('quick-reply');
-            }, 500);
-        }
-        
         chatMessages.appendChild(messageDiv);
         chatMessages.scrollTop = chatMessages.scrollHeight;
     }
@@ -90,22 +70,20 @@ document.addEventListener('DOMContentLoaded', function() {
                 },
                 body: JSON.stringify({ message: message })
             });
+
+            if (!response.ok){
+                throw new Error('Error HTTP: ${response.status}');
+            }
             
             const data = await response.json();
-            hideTypingIndicator();
+            console.log("Respuesat del Backend:", data);
             
             // Procesar respuesta del bot
+            hideTypingIndicator();
             if (data.response) {
-                // Si la respuesta tiene saltos de línea, dividir en varios mensajes
-                const botMessages = data.response.split('\n');
-                botMessages.forEach((msg, index) => {
-                    if (msg.trim()) {
-                        // Pequeño retraso entre mensajes para mejor experiencia
-                        setTimeout(() => {
-                            addMessage(msg.trim(), 'bot');
-                        }, index * 800);
-                    }
-                });
+                addMessage(data.response, 'bot');
+            } else {
+                throw new Error("Respuesta inesperada del servidor")
             }
         } catch (error) {
             hideTypingIndicator();
