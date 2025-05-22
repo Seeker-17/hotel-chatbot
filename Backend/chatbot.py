@@ -7,11 +7,13 @@
 # pickle Para cargar nuestros objetos preprocesados (palabras y clases) desde los archivos .pkl.
 # numpy Para manejar la bolsa de palabras como un array de NumPy.
 # tensorflow Para cargar nuestro modelo de red neuronal entrenado.
+# unicodedata Para eliminar acentos y caracteres especiales de las frases.
 import random
 import json
 import pickle
 import numpy as np
 import tensorflow as tf
+import unicodedata
 
 # NLTK para procesamiento de lenguaje natural.
 from nltk.stem import WordNetLemmatizer # Para reducir las palabras a su forma base (lema).
@@ -36,6 +38,13 @@ def init_chatbot():
 
 init_chatbot()
 
+#Función de normalización de texto, eliminando acentos y caracteres especiales.
+def remove_accents(text):
+    return ''.join(
+        c for c in unicodedata.normalize('NFD', text)
+        if unicodedata.category(c) != 'Mn'
+    )
+
 # FUNCIONES DE PREPROCESAMIENTO DE ENTRADA 
 # Estas funciones preparan la frase del usuario para que el modelo pueda entenderla.
 def clean_up_sentence(sentence):
@@ -44,6 +53,8 @@ def clean_up_sentence(sentence):
     y lematiza cada palabra (la reduce a su forma raíz y la convierte a minúsculas).
     Devuelve una lista de palabras procesadas.
     """
+    # Elimina acentos en la frase.
+    sentence = remove_accents(sentence)
     # Tokeniza la frase. Ejemplo: "Hola, ¿cómo estás?" -> ["Hola", ",", "¿", "cómo", "estás", "?"]
     sentence_words = nltk.word_tokenize(sentence)
         # Lematiza cada palabra y la convierte a minúsculas.
@@ -128,7 +139,7 @@ def get_response(intents_list, intents_json, user_message=None):
         return "No entendí tu mensaje. ¿Puedes reformularlo?" # Pregunta al usuario si puede reformular el mensaje
     
     # Si el porcentaje de predicción es muy bajo...
-    if float(intents_list[0]['probability']) < 0.5:
+    if float(intents_list[0]['probability']) < 0.65:
         with open("Backend/retraining.txt", "a", encoding="utf-8") as f: # Escribe en el documento de texto el mensaje que se predijo de manera baja.
             f.write(user_message + "\n")
         
