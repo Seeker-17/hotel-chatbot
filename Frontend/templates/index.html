@@ -4,44 +4,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chatbot - Hotel Premier</title>
-    <link rel="stylesheet" href="/static/css/style.css">
+    <!--<link rel="stylesheet" href="/static/css/style.css">-->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
-<body>
+<body class="flex items-center justify-center min-h-screen bg-[#f5f7fa] font-sans text-[#333]">
     <!-- CONTENEDOR PRINCIPAL DE LA APP -->
-    <div class="app-container">
+    <div class="app-container w-full max-w-md h-[90vh] bg-white rounded-[15px] shadow-[0_5px_25px_rgba(0,0,0,0.1)] overflow-hidden flex flex-col overflow-hidden">
         <!-- CABEZERA -->
-        <header class="chat-header">
-            <div class="hotel-info">
-                <img src="/static/images/LogoHotel.png" alt="Logo Hotel Premier" class="logo">
-                <h1>Hotel Premier.</h1>
+        <header class="flex items-center justify-between p-4 bg-gradient-to-tr form-[#09182b] to-[#0095be] text-white">
+            <div class="hotel-brand flex items-center gap-2">
+                <img src="/static/images/LogoHotel.png" alt="Logo Hotel Premier" class="w-10 h-10 rounded-full">
+                <h1 class="text-lg font-semibold">Hotel Premier.</h1>
             </div>
-            <div class="chat-status">
-                <span class="status-dot"></span>
+            <div class="chat-status flex items-center gap-1 text-sm">
+                <span class="status-dot w-2.5 h-2.5 bg-green-500 rounded-full pulse"></span>
                 <span>Activo</span>
             </div>
         </header>
 
         <!-- ÁREA DE MENSAJES -->
-        <div class="chat-container">
-            <div class="chat-messages" id="chat-messages">
+        <div class="chat-container flex-1 p-5 overflow-y-auto bg-[#f0f4f8]">
+            <div class="chat-messages flezx flex-col gap-4" id="chat-messages">
                 <!-- Bienvenida -->
-                <div class="message bot-message">
-                    <div class="message-content">
-                        <p>¡Hola! Soy el asistente virtual del Hotel Premier. ¿En que puedo ayudarte hoy?</p>
-                    </div>
-                    <div class="message-time"></div>
-                </div>
+                <!-- Se agregan con el archivo js-->
             </div>
 
-            <div class="input-area">
-                <div class="input-container">
-                    <input type="text" id="user-input" placeholder="Escribe tu mensaje..." autocomplete="off">
-                <button id="send-button">
-                    <i class="fas fa-paper-plane"></i>
-                </button>
+            <!-- Mensaje de escritura -->
+            <div class="typing opacity-80 self-start">
+                <div class="typing-content flex items-center h-5">
+                    <div class="typing-dot w-1.5 h-1.5 bg-gray-600 rounded-full mx-[2px]"></div>
+                    <div class="typing-dot w-1.5 h-1.5 bg-gray-600 rounded-full mx-[2px]"></div>
+                    <div class="typing-dot w-1.5 h-1.5 bg-gray-600 rounded-full mx-[2px]"></div>
                 </div>
             </div>
-
+            <!-- Area de entrada -->
+            <div class="input-area p-4 bg-white border-t border-gray-200">
+                <div class="input-container flex gap-3 mb-3">
+                    <input id="user-input" type="text" placeholder="Escribe un mensaje..." class="flex-1 px-4 py-3 border border-gray founded-full focus:outline-none focus:border-[#0072ff] text-base">
+                    <button id="send-button" class="w-11 h-11 bg-[#0072ff] hover:bg-[005cc5] text-white full items-center justify-center">
+                        &#9656;
+                    </button>
+                </div>
+                </div>
         </div>
 
     </div>

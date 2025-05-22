@@ -3,24 +3,29 @@ document.addEventListener('DOMContentLoaded', function() {
     const chatMessages = document.getElementById('chat-messages');
     const userInput = document.getElementById('user-input');
     const sendButton = document.getElementById('send-button');
-    const quickButtons = document.querySelectorAll('.quick-button'); // Or whatever class you use for quick reply buttons
     let isTyping = false;
 
     // Función para añadir mensajes al chat
     function addMessage(text, sender, isQuickReply = false) {
         const messageDiv = document.createElement('div');
-        messageDiv.classList.add('message', '${sender}-message');
+        const isUser = sender === 'user';
 
-        const contentDiv = document.createElement('div');
-        contentDiv.classList.add('message-content');
-        contentDiv.textContent = text;
+        // Set classes for user or bot
+        messageDiv.className =
+        `message ${isUser ? 'user-message self-end bg-blue-600 text-white' : 'bot-message self-start bg-white text-[#333]'} shadow-md rounded-[18px] ${isUser ? 'rounded-br-[5px]' : 'rounded-bl-[5px]'} p-4 max-w-[80%] flex flex-col`;
 
+        // Message text
+        const textDiv = document.createElement('div');
+        textDiv.textContent = text;
+
+        // Time
         const timeDiv = document.createElement('div');
-        timeDiv.classList.add('message-time');
+        timeDiv.className = 'message-time text-xs text-gray-400 mt-1 text-right';
         timeDiv.textContent = new Date().toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'});
 
-        messageDiv.appendChild(contentDiv);
+        messageDiv.appendChild(textDiv);
         messageDiv.appendChild(timeDiv);
+
         chatMessages.appendChild(messageDiv);
         chatMessages.scrollTop = chatMessages.scrollHeight;
     }
@@ -31,16 +36,16 @@ document.addEventListener('DOMContentLoaded', function() {
         
         isTyping = true;
         const typingDiv = document.createElement('div');
-        typingDiv.classList.add('message', 'bot-message', 'typing');
+        typingDiv.classList.add('flex', 'justify-start', 'my-2');
         typingDiv.id = 'typing-indicator';
         
         const contentDiv = document.createElement('div');
-        contentDiv.classList.add('message-content', 'typing-content');
+        contentDiv.className = 'bg-gray-200 text-gray-800 px-4 py-2 rounded-lg max-w-[75%] text-sm shadow flex items-center';
         
         // Puntos de animación
         for (let i = 0; i < 3; i++) {
             const dot = document.createElement('span');
-            dot.classList.add('typing-dot');
+            dot.classList.add('typing-dot', 'w-2', 'h-2', 'bg-gray-600', 'rounded-full', 'mx-1', 'inline-block');
             contentDiv.appendChild(dot);
         }
         
@@ -62,7 +67,6 @@ document.addEventListener('DOMContentLoaded', function() {
     async function sendMessageToBackend(message) {
         try {
             showTypingIndicator();
-            
             const response = await fetch('/chat', {
                 method: 'POST',
                 headers: {
@@ -72,12 +76,11 @@ document.addEventListener('DOMContentLoaded', function() {
             });
 
             if (!response.ok){
-                throw new Error('Error HTTP: ${response.status}');
+                throw new Error(`Error HTTP: ${response.status}`);
             }
             
             const data = await response.json();
             console.log("Respuesat del Backend:", data);
-            
             // Procesar respuesta del bot
             hideTypingIndicator();
             if (data.response) {
@@ -112,19 +115,19 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Botones de acción rápida
-    quickButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const message = this.getAttribute('data-message');
-            addMessage(message, 'user', true);
-            sendMessageToBackend(message);
-        });
-    });
+    //quickButtons.forEach(button => {
+    //    button.addEventListener('click', function() {
+    //        const message = this.getAttribute('data-message');
+    //        addMessage(message, 'user', true);
+    //        sendMessageToBackend(message);
+    //    });
+    //});
 
     // Efecto de enfoque automático en el input
     userInput.focus();
 
     // Mensaje de bienvenida inicial (opcional)
     setTimeout(() => {
-        addMessage("Puedo ayudarte con reservas, información de habitaciones, servicios del hotel y más. ¿En qué necesitas ayuda?", 'bot');
+        addMessage("¡Hola! ¿En que puedo ayudarte hoy?", 'bot');
     }, 1000);
 });
