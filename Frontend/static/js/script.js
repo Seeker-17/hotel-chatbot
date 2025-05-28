@@ -10,9 +10,9 @@ document.addEventListener('DOMContentLoaded', function() {
         const messageDiv = document.createElement('div');
         const isUser = sender === 'user';
 
-        // Set classes for user or bot
-        messageDiv.className =
-        `message ${isUser ? 'user-message self-end bg-blue-600 text-white' : 'bot-message self-start bg-white text-[#333]'} shadow-md rounded-[18px] ${isUser ? 'rounded-br-[5px]' : 'rounded-bl-[5px]'} p-4 max-w-[80%] flex flex-col`;
+       // Set classes for user or bot
+messageDiv.className =
+  `message ${isUser ? 'user-message self-end bg-[#007e91] text-white' : 'bot-message self-start bg-white text-[#333]'} shadow-md rounded-[18px] ${isUser ? 'rounded-br-[5px]' : 'rounded-bl-[5px]'} p-4 max-w-[80%] flex flex-col`;
 
         // Message text
         const textDiv = document.createElement('div');
