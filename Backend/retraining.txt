@@ -50,3 +50,31 @@ Ok
 inf
 $$
 Que fechas tiene disponible
+Busco habitacion
+Que tipo de servicioa me pfrece?
+Qué políticas tiene el hotel?
+cancelación
+cancelación
+cancelacion
+tienen restaurantes?
+tengo hambre
+Que habitacione stienen
+grasias
+Opinion
+opinión
+Quiero hacer un evento deportivo en el hotel
+Quiero hacer un evento deportivo
+Quieor llevar a cabo un evento
+Perdí
+No encuentro mis lentes
+Ando caliente
+Encontraron mi cartera?
+mi habitacion sigue sucia
+Tienen enfermería?
+¿Cuánto cuesta una habitación por noche?
+¿Cuáles son las políticas de cancelación?
+¿Pueden adaptar las comidas si tengo alergias alimentarias?
+¿Tienen piscina/gimnasio/spa?
+¿Hay lavandería o planchado de ropa?
+¿Tienen habitaciones accesibles para personas con discapacidad?
+¿Se requiere un depósito o garantía?
