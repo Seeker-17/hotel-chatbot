@@ -96,7 +96,7 @@
 			"responses": [
 				"Estamos ubicados en la calle 123, cuidad, estado, país. Para más información visita nuestro sitio web www.hotel.com.",
 				"Nuestra dirección es calle 123, ciudad, estado, país.",
-				"https://www.google.com/maps/place/Facultad+de+Sistemas+UAdeC/data=!4m2!3m1!1s0x0:0x4884b6bb05124874?sa=X&ved=1t:2428&ictx=111"
+				"https://www.google.com/maps/place/Facultad+de+Sistemas+UAdeC"
 			]
 		},
 		{
@@ -476,6 +476,14 @@
 			"responses": [
 				"Contamos con servicio médico bajo solicitud. Por favor contacta a recepción o marca el 911 en caso de emergencia.",
 				"Si necesitas atención médica, comunicate con recepción o llama al 911 para emergencias."
+			]
+		},
+		{
+			"tag": "piscina",
+			"patterns":["piscina", "Horario de la piscina", "¿Tienen piscina?", "¿Cuál es el horario de la piscina?", "¿Puedo usar la piscina?", "¿Está abierta la piscina?", "¿Qué horario tiene la piscina?", "piscina abierta", "piscina cerrada", "piscina al aire libre", "piscina cubierta"],
+			"responses": [
+				"La piscina está abierta de 8:00 AM a 8:00 PM. Por favor, respeta las normas de uso y no olvides tu toalla.",
+				"Contamos con una piscina al aire libre. El horario es de 8:00 AM a 8:00 PM. No olvides usar protector solar."
 			]
 		}
 	]

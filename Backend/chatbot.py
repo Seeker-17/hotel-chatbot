@@ -139,7 +139,7 @@ def get_response(intents_list, intents_json, user_message=None):
         return "No entendí tu mensaje. ¿Puedes reformularlo?" # Pregunta al usuario si puede reformular el mensaje
     
     # Si el porcentaje de predicción es muy bajo...
-    if float(intents_list[0]['probability']) < 0.65:
+    if float(intents_list[0]['probability']) < 0.95:
         with open("Backend/retraining.txt", "a", encoding="utf-8") as f: # Escribe en el documento de texto el mensaje que se predijo de manera baja.
             f.write(user_message + "\n")
         
